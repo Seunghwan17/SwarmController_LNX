@@ -1,0 +1,5 @@
+# NumDrone CollisionR ConjunctionR AvoidanceAlt LoiterTime HomeLat HomeLon ArenaFloorAlt ArenaRotationAngle ScreenTiltAngle outputFileName ClusterInfoFile IntervalBtwCluster 
+10 0.5 1 6 20 37.621889 127.099431 5 232 35 181105_droneshow_plan_70.txt takeoffClusterInfo_1105_70.txt 5
+# PlotFile UseMinimalPath(0/1)
+triangle-10.plot 1
+circle-10.plot 1

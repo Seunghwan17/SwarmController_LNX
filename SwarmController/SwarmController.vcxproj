@@ -13,16 +13,16 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
     <Keyword>QtVS_v301</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
@@ -67,9 +67,10 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);$(BULLDIR)\src\Geo_tier\VoronoiDiagram2D\include;$(BULLDIR)\src\Geo_tier\ShortestPath\include;$(BULLDIR)\src\Core_tier\include;$(BULLDIR)\src\Geo_tier\LabSrc\include;$(BULLDIR)\src\Geo_tier\VoronoiDiagram3D\include;$(DVD3DDIR)\include;$(VDRCQTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
@@ -80,16 +81,25 @@
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);$(BULLDIR)\src\Geo_tier\VoronoiDiagram2D\include;$(BULLDIR)\src\Geo_tier\ShortestPath\include;$(BULLDIR)\src\Core_tier\include;$(BULLDIR)\src\Geo_tier\LabSrc\include;$(BULLDIR)\src\Geo_tier\VoronoiDiagram3D\include;$(DVD3DDIR)\include;$(VDRCQTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DroneBall.cpp" />
+    <ClCompile Include="Hungarian.cpp" />
+    <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlanJsonWriter.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Snapshot.cpp" />
     <ClCompile Include="SwarmController.cpp" />
+    <ClCompile Include="SwarmDisplayer.cpp" />
+    <ClCompile Include="SwarmSimulator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SwarmController.h" />
@@ -99,6 +109,27 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="SwarmController.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="constForSwarmSimulator.h" />
+    <ClInclude Include="DroneBall.h" />
+    <ClInclude Include="Hungarian.h" />
+    <ClInclude Include="PlanJsonWriter.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Snapshot.h" />
+    <ClInclude Include="SwarmSimulator.h" />
+    <QtMoc Include="SwarmDisplayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DynamicVoronoiDiagram\BULL\BULL.vcxproj">
+      <Project>{e5551c7a-b101-4ba3-b128-0aec8d721111}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DynamicVoronoiDiagram\DynamicVD3DLib\DynamicVD3DLib.vcxproj">
+      <Project>{1b55a49e-5f6c-4be0-9703-d8282c02006a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VDRCQtLib\VDRCQtLib\VDRCQtLib.vcxproj">
+      <Project>{6b446e23-249c-4819-a228-8e55cc99ff7c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
