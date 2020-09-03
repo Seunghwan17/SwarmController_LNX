@@ -50,11 +50,11 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <QtInstall>msvc2017_64</QtInstall>
+    <QtInstall>msvc2019_64</QtInstall>
     <QtModules>core;gui;opengl;widgets</QtModules>
   </PropertyGroup>
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <QtInstall>msvc2017_64</QtInstall>
+    <QtInstall>msvc2019_64</QtInstall>
     <QtModules>core;gui;opengl;widgets</QtModules>
   </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
@@ -65,28 +65,30 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);$(BULLDIR)\src\Geo_tier\VoronoiDiagram2D\include;$(BULLDIR)\src\Geo_tier\ShortestPath\include;$(BULLDIR)\src\Core_tier\include;$(BULLDIR)\src\Geo_tier\LabSrc\include;$(BULLDIR)\src\Geo_tier\VoronoiDiagram3D\include;$(DVD3DDIR)\include;$(VDRCQTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);..\..\DynamicVoronoiDiagram\DynamicVD3DLib\include;..\..\VDRCQtLib\VDRCQtLib\include;$(VDIR)\src\V\Core_tier\include;$(VDIR)\src\V\Geo_tier\include;$(VDIR)\src\V\VUFS\include;$(VDIR)\src\V\API_tier\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <DebugInformationFormat />
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);$(BULLDIR)\src\Geo_tier\VoronoiDiagram2D\include;$(BULLDIR)\src\Geo_tier\ShortestPath\include;$(BULLDIR)\src\Core_tier\include;$(BULLDIR)\src\Geo_tier\LabSrc\include;$(BULLDIR)\src\Geo_tier\VoronoiDiagram3D\include;$(DVD3DDIR)\include;$(VDRCQTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);..\..\DynamicVoronoiDiagram\DynamicVD3DLib\include;..\..\VDRCQtLib\VDRCQtLib\include;$(VDIR)\src\V\Core_tier\include;$(VDIR)\src\V\Geo_tier\include;$(VDIR)\src\V\VUFS\include;$(VDIR)\src\V\API_tier\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -121,11 +123,23 @@
     <QtMoc Include="SwarmDisplayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DynamicVoronoiDiagram\BULL\BULL.vcxproj">
-      <Project>{e5551c7a-b101-4ba3-b128-0aec8d721111}</Project>
+    <ProjectReference Include="..\..\dev_vdrc\VUFS\VUFS.vcxproj">
+      <Project>{3913760f-393e-42c3-93f0-1cf973768670}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\dev_vdrc\V_API\V_API.vcxproj">
+      <Project>{623a6b1a-77bb-41fb-aedc-c1aef6bc786b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\dev_vdrc\V_Core\V_Core.vcxproj">
+      <Project>{266fa1e0-7282-45e8-a976-b3415761fca7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\dev_vdrc\V_Geo_Voronoi3D\V_Geo_Voronoi3D.vcxproj">
+      <Project>{9f9a4c3b-05b3-4377-a053-dae9c1d6e5b2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\DynamicVoronoiDiagram\DynamicVD3DLib\DynamicVD3DLib.vcxproj">
       <Project>{1b55a49e-5f6c-4be0-9703-d8282c02006a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DynamicVoronoiDiagram\RPolyPlusPlus\RPolyPlusPlus.vcxproj">
+      <Project>{51122464-5c6b-48e3-b5c6-b4001b651cac}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\VDRCQtLib\VDRCQtLib\VDRCQtLib.vcxproj">
       <Project>{6b446e23-249c-4819-a228-8e55cc99ff7c}</Project>
